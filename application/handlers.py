@@ -6,22 +6,12 @@ from application.messages import (
     TYPE_ERROR,
     FILE_IN_PROCESS
 )
-from models import User
-from application.serializers import MessageDataSerializer
+from application.containers import Gateways
 
 
 @dispatcher.message_handler(commands=['start', 'help'])
-async def send_welcome(message: Message):
-    user_data = MessageDataSerializer.parse_user_data(message=message)
-    user = User(
-        telegram_user_id=user_data.telegram_user_id,
-        telegram_chat_id=user_data.telegram_chat_id
-    )
-    db_session = message.bot.get("db")
-
-    async with db_session() as session:
-        session.add(user)
-        await session.commit()
+async def register_user(message: Message, handlers_service = Gateways.handlers_service) -> None:
+    await handlers_service.create_user(message=message)
     await message.reply(WELCOME)
 
 
