@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "watsonapp"
+version = "0.1.0"
+description = ""
+authors = ["strangesphagnum"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+SQLAlchemy = "^1.4.37"
+psycopg2-binary = "^2.9.3"
+pydantic = "^1.9.1"
+alembic = "^1.8.0"
+asyncpg = "^0.25.0"
+greenlet = "^1.1.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
