@@ -13,4 +13,3 @@ Wrong message type! You should upload document to start process
 FILE_IN_PROCESS = """
 Your file is being processed..
 """
-

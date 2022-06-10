@@ -12,8 +12,8 @@ class HandlersRepository:
     async def create_user(self, user_data: UserData) -> None:
         async with self.db_session() as session:
             user = User(
-                telegram_user_id = user_data.telegram_user_id,
-                telegram_chat_id = user_data.telegram_chat_id
+                telegram_user_id=user_data.telegram_user_id,
+                telegram_chat_id=user_data.telegram_chat_id,
             )
             session.add(user)
             await session.commit()

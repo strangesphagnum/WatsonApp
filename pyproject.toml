@@ -13,8 +13,12 @@ alembic = "^1.8.0"
 asyncpg = "^0.25.0"
 greenlet = "^1.1.2"
 aiogram = "^2.20"
+black = "^22.3.0"
 
 [tool.poetry.dev-dependencies]
+
+[tool.black]
+exclude = '(\.eggs|\.git|\.hg|__pycache__|migrations)'
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

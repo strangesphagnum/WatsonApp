@@ -1,16 +1,14 @@
 from aiogram.types import Message, ContentTypes
 
 from application.dispatcher import dispatcher
-from application.messages import (
-    WELCOME,
-    TYPE_ERROR,
-    FILE_IN_PROCESS
-)
+from application.messages import WELCOME, TYPE_ERROR, FILE_IN_PROCESS
 from application.containers import Gateways
 
 
-@dispatcher.message_handler(commands=['start', 'help'])
-async def register_user(message: Message, handlers_service = Gateways.handlers_service) -> None:
+@dispatcher.message_handler(commands=["start", "help"])
+async def register_user(
+    message: Message, handlers_service=Gateways.handlers_service
+) -> None:
     await handlers_service.create_user(message=message)
     await message.reply(WELCOME)
 

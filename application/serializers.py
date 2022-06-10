@@ -11,6 +11,6 @@ class MessageDataSerializer:
     @classmethod
     def parse_user_data(cls, message: Message) -> UserData:
         return UserData(
-            telegram_user_id = message["from"]["id"],
-            telegram_chat_id = message["chat"]["id"]
+            telegram_user_id=message["from"]["id"],
+            telegram_chat_id=message["chat"]["id"],
         )
