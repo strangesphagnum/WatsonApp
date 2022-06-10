@@ -11,8 +11,6 @@ class Settings(BaseSettings):
     DATABASE_USER: str = "jesus"
     DATABASE_PASS: str = ""
 
-    postgres_dsn_url: Optional[AnyUrl] = None
-
     @property
     def db_url(self) -> str:
         return "postgresql+asyncpg://{user}:{password}@{host}:{port}/{name}".format(
