@@ -6,14 +6,14 @@ from typing import Optional
 from aiogram.types import Message
 
 from models import User
-from application.serializers import UserData, MessageDataSerializer
+from application.serializers import MessageDataSerializer
 from application.repositories import UserRepository
 from application.exceptions import TooManyAttemptsError
 from settings import settings
 
 
 class UserService:
-    def __init__(self, user_repository):
+    def __init__(self, user_repository: UserRepository):
         self._user_repository: UserRepository = user_repository
 
     async def _get_user(self, message: Message) -> Optional[User]:

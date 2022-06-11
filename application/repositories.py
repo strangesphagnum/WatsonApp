@@ -3,15 +3,15 @@ from typing import Optional
 from datetime import datetime
 
 from sqlalchemy.future import select
-from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.sql.expression import Update
 
 from models import User
 
 
 class UserRepository:
-    def __init__(self, db_session):
-        self.db_session = db_session
+    def __init__(self, db_session: AsyncSession):
+        self.db_session: AsyncSession = db_session
 
     async def create_record(self, telegram_user_id: int, telegram_chat_id: int) -> None:
         async with self.db_session() as session:
