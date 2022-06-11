@@ -7,14 +7,14 @@ from aiogram.types import Message
 
 from models import User
 from application.serializers import UserData, MessageDataSerializer
-from application.repositories import HandlersRepository
+from application.repositories import UserRepository
 from application.exceptions import TooManyAttemptsError
 from settings import settings
 
 
-class HandlersService:
+class UserService:
     def __init__(self, user_repository):
-        self._user_repository: HandlersRepository = user_repository
+        self._user_repository: UserRepository = user_repository
 
     async def _get_user(self, message: Message) -> Optional[User]:
         user_data = MessageDataSerializer.parse_user_data(message=message)

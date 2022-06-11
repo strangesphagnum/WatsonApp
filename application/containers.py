@@ -1,9 +1,9 @@
 from application.repositories import UserRepository
-from application.services import HandlersService
+from application.services import UserService
 
 from base import async_session
 
 
 class Gateways:
-    handlers_repository = UserRepository(async_session)
-    handlers_service = HandlersService(handlers_repository)
+    user_repository = UserRepository(async_session)
+    user_service = UserService(user_repository)
