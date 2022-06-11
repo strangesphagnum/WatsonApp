@@ -13,7 +13,7 @@ class UserRepository:
     def __init__(self, db_session):
         self.db_session = db_session
 
-    async def create_user(self, telegram_user_id: int, telegram_chat_id: int) -> None:
+    async def create_record(self, telegram_user_id: int, telegram_chat_id: int) -> None:
         async with self.db_session() as session:
             user = User(
                 telegram_user_id=telegram_user_id,
@@ -22,7 +22,7 @@ class UserRepository:
             session.add(user)
             await session.commit()
 
-    async def get_user(self, telegram_user_id: int) -> Optional[User]:
+    async def get_record(self, telegram_user_id: int) -> Optional[User]:
         stm = select(User).where(User.telegram_user_id == telegram_user_id)
 
         async with self.db_session() as session:
@@ -34,7 +34,7 @@ class UserRepository:
 
         return user
 
-    async def update_user_last_uploaded(self, telegram_user_id: int) -> None:
+    async def update_record_last_uploaded(self, telegram_user_id: int) -> None:
         # TODO: make query simplier
         current_date = datetime.now()
         stm = select(User).where(User.telegram_user_id == telegram_user_id)
