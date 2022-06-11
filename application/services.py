@@ -13,13 +13,12 @@ from settings import settings
 
 
 class HandlersService:
-    def __init__(self, handlers_repository):
-        logging.info("HandlersService initialized")
-        self._handlers_repository: HandlersRepository = handlers_repository
+    def __init__(self, user_repository):
+        self._user_repository: HandlersRepository = user_repository
 
     async def _get_user(self, message: Message) -> Optional[User]:
         user_data = MessageDataSerializer.parse_user_data(message=message)
-        return await self._handlers_repository.get_user(
+        return await self._user_repository.get_user(
             telegram_user_id=user_data.telegram_user_id
         )
 
@@ -31,13 +30,13 @@ class HandlersService:
             (now - user.last_uploaded).total_seconds() < settings.SECONDS_PER_DAY
         ):
             raise TooManyAttemptsError
-        await self._handlers_repository.update_user_last_uploaded(user.telegram_user_id)
+        await self._user_repository.update_user_last_uploaded(user.telegram_user_id)
 
     async def create_user_if_none(self, message: Message) -> None:
         user_data = MessageDataSerializer.parse_user_data(message=message)
         user = await self._get_user(message)
         if user is None:
-            await self._handlers_repository.create_user(
+            await self._user_repository.create_user(
                 telegram_user_id=user_data.telegram_user_id,
                 telegram_chat_id=user_data.telegram_chat_id,
             )

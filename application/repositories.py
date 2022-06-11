@@ -9,9 +9,8 @@ from sqlalchemy.sql.expression import Update
 from models import User
 
 
-class HandlersRepository:
+class UserRepository:
     def __init__(self, db_session):
-        logging.info("HandlersRepository instance initialized")
         self.db_session = db_session
 
     async def create_user(self, telegram_user_id: int, telegram_chat_id: int) -> None:
