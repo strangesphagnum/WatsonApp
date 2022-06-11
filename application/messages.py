@@ -10,6 +10,10 @@ TYPE_ERROR = """
 Wrong message type! You should upload document to start process
 """
 
-FILE_IN_PROCESS = """
-Your file is being processed..
+FILE_ADDED_TO_QUEUE = """
+Your file added to queue and will be processed soon
+"""
+
+TOO_MANY_ATTEMPTIONS = """
+You should wait for 24 hours before the next genome scan
 """

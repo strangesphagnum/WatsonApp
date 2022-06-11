@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     DATABASE_PASS: str = ""
 
     TELEGRAM_API_TOKEN: str = ""
+    SECONDS_PER_DAY: int = 86400
 
     @property
     def db_url(self) -> str:
