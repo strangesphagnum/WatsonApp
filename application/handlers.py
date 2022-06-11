@@ -7,9 +7,9 @@ from application.containers import Gateways
 
 @dispatcher.message_handler(commands=["start", "help"])
 async def register_user(
-    message: Message, handlers_service=Gateways.handlers_service
+    message: Message, _handlers_service=Gateways.handlers_service
 ) -> None:
-    await handlers_service.create_user(message=message)
+    await _handlers_service.create_user_if_none(message=message)
     await message.reply(WELCOME)
 
 
