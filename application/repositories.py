@@ -4,7 +4,6 @@ from typing import Optional
 from sqlalchemy.future import select
 
 from models import User
-from application.serializers import UserData
 
 
 class HandlersRepository:
