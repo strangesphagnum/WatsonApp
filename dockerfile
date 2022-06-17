@@ -8,5 +8,5 @@ RUN yes | apt update && yes | apt install git && pip install --no-cache-dir "poe
     && poetry install --no-interaction --no-ansi
 COPY ./ ./
 
-# Run from uvicorn
+# TODO: Run from uvicorn
 CMD ["bash", "-c", "alembic upgrade head && python3 main.py"]
