@@ -12,13 +12,18 @@ from application.exceptions import TooManyAttemptsError
 from settings import settings
 
 
+""" TODO:
+set interaction with rabbitmq
+"""
+
+
 class UserService:
     def __init__(self, user_repository: UserRepository):
         self._user_repository: UserRepository = user_repository
 
     async def _get_user(self, message: Message) -> Optional[User]:
-        """ TODO: get rid of inner method
-        in order not to generate redundancy """
+        """TODO: get rid of inner method
+        in order not to generate redundancy"""
         user_data = MessageDataSerializer.parse_user_data(message=message)
         return await self._user_repository.get_record(
             telegram_user_id=user_data.telegram_user_id
