@@ -13,7 +13,7 @@ from settings import settings
 
 
 """ TODO:
-set interaction with rabbitmq
+1. Set interaction with rabbitmq
 """
 
 

@@ -9,6 +9,10 @@ from sqlalchemy.sql.expression import Update
 from models import User
 
 
+""" TODO:
+1. Write abstract repository
+"""
+
 class UserRepository:
     def __init__(self, db_session: AsyncSession):
         self.db_session: AsyncSession = db_session
