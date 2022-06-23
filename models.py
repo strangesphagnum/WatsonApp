@@ -19,11 +19,11 @@ class User(Base):
     telegram_chat_id = sa.Column("telegram_chat_id", sa.Integer(), nullable=False)
     registered_at = sa.Column(
         "registered_at",
-        sa.TIMESTAMP(timezone=True),
+        sa.TIMESTAMP(timezone=False),
         nullable=False,
         server_default=func.now(),
     )
-    last_uploaded = sa.Column("last_uploaded", sa.TIMESTAMP(timezone=True))
+    last_uploaded = sa.Column("last_uploaded", sa.TIMESTAMP(timezone=False))
 
 
 class Mutation(Base):
