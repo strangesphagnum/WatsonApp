@@ -9,7 +9,6 @@ from models import User
 from application.serializers import MessageDataSerializer
 from application.repositories import UserRepository
 from application.exceptions import TooManyAttemptsError
-from settings import settings
 
 
 """ TODO:
@@ -30,11 +29,11 @@ class UserService:
         )
 
     async def update_user_uploaded_date(self, message: Message) -> None:
-        # TODO: simplify dt calc, check for last_uploaded data type
+        # TODO: check for last_uploaded data type
         user = await self._get_user(message)
         now = datetime.now(timezone.utc)
         if (user.last_uploaded is not None) and (
-            (now - user.last_uploaded).total_seconds() < settings.SECONDS_PER_DAY
+            (now - user.last_uploaded).days < 1
         ):
             raise TooManyAttemptsError
         await self._user_repository.update_record_last_uploaded(user.telegram_user_id)
