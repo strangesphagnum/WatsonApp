@@ -1,4 +1,4 @@
-import logging
+from abc import ABC, abstractmethod
 from typing import Optional
 from datetime import datetime
 
@@ -9,11 +9,18 @@ from sqlalchemy.sql.expression import Update
 from models import User
 
 
-""" TODO:
-1. Write abstract repository
-"""
+# TODO: rethink abstract repo for this case 
+class AbstractRepository(ABC):
+    @abstractmethod
+    def create_record(self):
+        raise NotImplementedError
 
-class UserRepository:
+    @abstractmethod
+    def get_record(self):
+        raise NotImplementedError
+
+
+class UserRepository(AbstractRepository):
     def __init__(self, db_session: AsyncSession):
         self.db_session: AsyncSession = db_session
 

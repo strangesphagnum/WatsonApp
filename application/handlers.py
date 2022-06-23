@@ -17,7 +17,7 @@ async def register_user(message: Message, _user_service=Gateways.user_service) -
     await message.reply(WELCOME)
 
 
-# The order is important since dispatcher will check for document type first
+# Handlers order is important since dispatcher should check for document type first
 @dispatcher.message_handler(content_types=ContentTypes.DOCUMENT)
 async def add_file_to_queue(message: Message, _user_service=Gateways.user_service):
     try:
