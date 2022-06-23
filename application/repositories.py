@@ -40,9 +40,6 @@ class UserRepository(AbstractRepository):
             user_raw = await session.execute(stm)
             user = user_raw.scalar()
 
-        if user is None:
-            return None
-
         return user
 
     async def update_record_last_uploaded(self, telegram_user_id: int) -> None:
