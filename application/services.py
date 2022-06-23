@@ -29,7 +29,6 @@ class UserService:
         )
 
     async def update_user_uploaded_date(self, message: Message) -> None:
-        # TODO: check for last_uploaded data type
         user = await self._get_user(message)
         now = datetime.now()
         if (user.last_uploaded is not None) and (
