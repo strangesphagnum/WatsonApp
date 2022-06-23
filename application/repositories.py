@@ -2,9 +2,10 @@ from abc import ABC, abstractmethod
 from typing import Optional
 from datetime import datetime
 
+from sqlalchemy import update
 from sqlalchemy.future import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.sql.expression import Update
+# from sqlalchemy.sql.expression import Update
 
 from models import User
 
@@ -46,12 +47,8 @@ class UserRepository(AbstractRepository):
         return user
 
     async def update_record_last_uploaded(self, telegram_user_id: int) -> None:
-        # TODO: make query simplier
-        current_date = datetime.now()
-        stm = select(User).where(User.telegram_user_id == telegram_user_id)
+        stmt = update(User).where(User.telegram_user_id == telegram_user_id).values(last_uploaded = datetime.now())
 
         async with self.db_session() as session:
-            user_raw = await session.execute(stm)
-            user = user_raw.scalar()
-            user.last_uploaded = current_date
+            await session.execute(stmt)
             await session.commit()
