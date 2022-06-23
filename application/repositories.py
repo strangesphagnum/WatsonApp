@@ -5,12 +5,11 @@ from datetime import datetime
 from sqlalchemy import update
 from sqlalchemy.future import select
 from sqlalchemy.ext.asyncio import AsyncSession
-# from sqlalchemy.sql.expression import Update
 
 from models import User
 
 
-# TODO: rethink abstract repo for this case 
+# TODO: rethink abstract repo for this case
 class AbstractRepository(ABC):
     @abstractmethod
     def create_record(self):
@@ -47,7 +46,11 @@ class UserRepository(AbstractRepository):
         return user
 
     async def update_record_last_uploaded(self, telegram_user_id: int) -> None:
-        stmt = update(User).where(User.telegram_user_id == telegram_user_id).values(last_uploaded = datetime.now())
+        stmt = (
+            update(User)
+            .where(User.telegram_user_id == telegram_user_id)
+            .values(last_uploaded=datetime.now())
+        )
 
         async with self.db_session() as session:
             await session.execute(stmt)

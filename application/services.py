@@ -23,9 +23,7 @@ class UserService:
             telegram_user_id=user_data.telegram_user_id
         )
         now = datetime.now()
-        if (user.last_uploaded is not None) and (
-            (now - user.last_uploaded).days < 1
-        ):
+        if (user.last_uploaded is not None) and ((now - user.last_uploaded).days < 1):
             raise TooManyAttemptsError
         await self._user_repository.update_record_last_uploaded(user.telegram_user_id)
 
