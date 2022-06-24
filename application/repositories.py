@@ -10,6 +10,7 @@ from application.models import User
 from components.queue import AMQPQueueConstructor
 
 
+# TODO: redesign abstract repo for this case
 class AbstractRepository:
     pass
 
