@@ -6,21 +6,15 @@ from sqlalchemy import update
 from sqlalchemy.future import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from models import User
+from application.models import User
+from components.queue import AMQPQueueConstructor
 
 
-# TODO: rethink abstract repo for this case
-class AbstractRepository(ABC):
-    @abstractmethod
-    def create_record(self):
-        raise NotImplementedError
-
-    @abstractmethod
-    def get_record(self):
-        raise NotImplementedError
+class AbstractRepository:
+    pass
 
 
-class UserRepository(AbstractRepository):
+class SQLRepository(AbstractRepository):
     def __init__(self, db_session: AsyncSession):
         self.db_session: AsyncSession = db_session
 
@@ -52,3 +46,11 @@ class UserRepository(AbstractRepository):
         async with self.db_session() as session:
             await session.execute(stmt)
             await session.commit()
+
+
+class RabbitRepository(AbstractRepository):
+    def __init__(self, amqp_instance: AMQPQueueConstructor):
+        self.amqp_instance = amqp_instance
+
+    async def publish_record(self, message: str) -> None:
+        await self.amqp_instance.publish_message(message)

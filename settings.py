@@ -1,15 +1,12 @@
 from pydantic import BaseSettings
 
 
-class Settings(BaseSettings):
-    DEBUG: bool = True
+class DatabaseSettings(BaseSettings):
     DATABASE_NAME: str = "watson"
     DATABASE_HOST: str = "localhost"
     DATABASE_PORT: int = 5432
     DATABASE_USER: str = "jesus"
     DATABASE_PASS: str = ""
-
-    TELEGRAM_API_TOKEN: str = ""
 
     @property
     def db_dsn(self) -> str:
@@ -22,4 +19,28 @@ class Settings(BaseSettings):
         )
 
 
-settings = Settings()
+class RabbitMQSettings(BaseSettings):
+    AMQP_PORT: int = 5672
+    AMQP_LOGIN: str = "guest"
+    AMQP_PASSWORD: str = "guest"
+    AMQP_TELEGRAM_QUEUE_NAME: str = "telegram-chat-document"
+    AMQP_HOST: str = "localhost"
+
+    @property
+    def rabbit_dsn(self) -> str:
+        return "amqp://{user}:{password}@{host}/".format(
+            user=self.AMQP_LOGIN,
+            password=self.AMQP_PASSWORD,
+            host=self.AMQP_HOST,
+        )
+
+
+class TelegramSettings(BaseSettings):
+    TELEGRAM_API_TOKEN: str = ""
+
+
+class CommonSettings(DatabaseSettings, RabbitMQSettings, TelegramSettings):
+    DEBUG: bool = True
+
+
+settings = CommonSettings()
