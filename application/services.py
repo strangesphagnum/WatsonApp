@@ -9,8 +9,8 @@ from application.exceptions import TooManyAttemptsError
 
 
 class SQLService:
-    def __init__(self, user_repository: SQLRepository):
-        self._sql_repository: SQLRepository = user_repository
+    def __init__(self, sql_repository: SQLRepository):
+        self._sql_repository: SQLRepository = sql_repository
 
     async def check_user_uploaded_date(self, message: Message) -> None:
         message_data = MessageDataSerializer.parse_message_data(message=message)
