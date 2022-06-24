@@ -9,7 +9,7 @@ class AMQPQueueConstructor:
     amqp_channel: aio_pika.Channel
     routing_queue: str
 
-    def __init__(self, routing_queue):
+    def __init__(self, routing_queue: str):
         self.routing_queue = routing_queue
 
     async def publish_message(self, message):
