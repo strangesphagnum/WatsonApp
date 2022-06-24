@@ -12,7 +12,7 @@ class UserData(BaseModel):
 
 class MessageDataSerializer:
     @classmethod
-    def parse_user_data(cls, message: Message) -> UserData:
+    def parse_message_data(cls, message: Message) -> UserData:
         message = dict(message)
         document = message.get("document")
         return UserData(
