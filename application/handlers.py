@@ -11,7 +11,7 @@ from application.containers import Gateways
 from application.exceptions import TooManyAttemptsError
 
 
-@dispatcher.message_handler(commands=["start", "help"])
+@dispatcher.message_handler(commands=["start"])
 async def register_user(message: Message, user_service=Gateways.user_service) -> None:
     await user_service.create_user_if_none(message=message)
     await message.reply(WELCOME)
