@@ -12,17 +12,16 @@ Built on
 - [aio-pika](https://aio-pika.readthedocs.io)
 
 # Usage
-Please visit
-[https://t.me/mutations_seeker_bot](mutations_seeker_bot)
+Please visit [mutations_seeker_bot](https://t.me/mutations_seeker_bot)
 
 Start the bot and follow the instructions.
 
 # About Watson Project
 Work in progress!
 
-Named after [https://en.wikipedia.org/wiki/James_Watson](James Watson) Watson project provides simple tool availiable in telegram for user's genome mutations check.
+Named after [James Watson](https://en.wikipedia.org/wiki/James_Watson) Watson project provides simple tool availiable in telegram for user's genome mutations check.
 
-It allows user to upload .23andme type genome data and seek for important mutations based on [https://opensnp.org](OpenSNP) source.
+It allows user to upload .23andme type genome data and seek for important mutations based on [OpenSNP](https://opensnp.org) source.
 
 The founded mutations returns as message in telegram directly to user with clinical data provided.
 
