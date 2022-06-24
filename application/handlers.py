@@ -21,7 +21,8 @@ async def register_user(message: Message, user_service=Gateways.user_service):
 # Handlers order is important since dispatcher should check for document type first
 @dispatcher.message_handler(content_types=ContentTypes.DOCUMENT)
 async def add_file_to_queue(message: Message, user_service=Gateways.user_service):
-    """1. Works if message type is Document
+    """
+    1. Works if message type is Document
     2. Check if uploaded date user's record delta with current dt is no more than 1 day
     3. Send message for both success and unsucess case
     """
@@ -35,7 +36,8 @@ async def add_file_to_queue(message: Message, user_service=Gateways.user_service
 
 @dispatcher.message_handler(content_types=ContentTypes.ANY)
 async def not_document(message: Message):
-    """1. Works if message type doesn't satisfy 'Document' type condition
+    """
+    1. Works if message type doesn't satisfy 'Document' type condition
     2. Send message that informs user about wrong message type
     """
     await message.reply(TYPE_ERROR)
