@@ -4,13 +4,8 @@ from datetime import datetime
 from aiogram.types import Message
 
 from application.serializers import MessageDataSerializer
-from application.repositories import UserRepository
+from application.repositories import UserRepository, RabbitRepository
 from application.exceptions import TooManyAttemptsError
-
-
-""" TODO:
-1. Set interaction with rabbitmq
-"""
 
 
 class UserService:
@@ -43,3 +38,13 @@ class UserService:
                 telegram_user_id=user_data.telegram_user_id,
                 telegram_chat_id=user_data.telegram_chat_id,
             )
+
+
+class UserRabbitService:
+    def __init__(self, rabbit_repository: RabbitRepository):
+        self._rabbit_repository: RabbitRepository = rabbit_repository
+
+    async def publish_message(self, message: Message) -> None:
+        user_data = MessageDataSerializer.parse_user_data(message=message)
+        message = f"{user_data.telegram_chat_id}:{user_data.document_id}"
+        await self._rabbit_repository.publish_record(message=message)
