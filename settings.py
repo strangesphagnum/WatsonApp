@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     TELEGRAM_API_TOKEN: str = ""
 
     @property
-    def db_url(self) -> str:
+    def db_dsn(self) -> str:
         return "postgresql+asyncpg://{user}:{password}@{host}:{port}/{name}".format(
             user=self.DATABASE_USER,
             password=self.DATABASE_PASS,
