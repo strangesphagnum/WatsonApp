@@ -13,7 +13,7 @@ Built on
 
 # Usage
 Please visit
-[https://t.me/mutations_seeker_bot](mutations seeker bot)
+[https://t.me/mutations_seeker_bot](mutations_seeker_bot)
 
 Start the bot and follow the instructions.
 
