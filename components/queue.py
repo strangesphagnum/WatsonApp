@@ -12,7 +12,7 @@ class AMQPQueueConstructor:
     def __init__(self, routing_queue: str):
         self.routing_queue = routing_queue
 
-    async def publish_message(self, message):
+    async def publish_message(self, message: str):
         self.amqp_connection = await aio_pika.connect_robust(settings.rabbit_dsn)
         async with self.amqp_connection:
             self.amqp_channel = await self.amqp_connection.channel()
