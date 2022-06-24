@@ -1,7 +1,7 @@
 from application.repositories import UserRepository
 from application.services import UserService
 
-from base import async_session
+from components.base import async_session
 
 
 class Gateways:

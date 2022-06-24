@@ -6,7 +6,7 @@ from sqlalchemy import update
 from sqlalchemy.future import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from models import User
+from application.models import User
 
 
 # TODO: rethink abstract repo for this case
