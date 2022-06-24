@@ -39,8 +39,16 @@ class TelegramSettings(BaseSettings):
     TELEGRAM_API_TOKEN: str = ""
 
 
+class TestSettings(BaseSettings):
+    TELEGRAM_APP_ID: int = 1
+    TELEGRAM_APP_HASH: str = ""
+    TELEGRAM_APP_SESSION: str = ""
+    TELEGRAM_BOT_NAME: str = "watson_bot"
+
+
 class CommonSettings(DatabaseSettings, RabbitMQSettings, TelegramSettings):
     DEBUG: bool = True
 
 
 settings = CommonSettings()
+test_settings = TestSettings()
