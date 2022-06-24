@@ -6,17 +6,22 @@ Provides:
 - db models
 - rabbitmq message publishing
 
-Built on
+Built on:
 - [AIOGram](https://docs.aiogram.dev)
 - [SQLAlchemy 1.4](https://docs.sqlalchemy.org/en/14/)
 - [aio-pika](https://aio-pika.readthedocs.io)
 
 # Usage
-Please visit [mutations seeker bot](https://t.me/mutations_seeker_bot), start the bot and follow the instructions.
+For client usage please visit [mutations seeker bot](https://t.me/mutations_seeker_bot), start the bot and follow the instructions.
 
-*Currently unavailable*
+*Currently unavailable. Please, contact [developer](https://t.me/poteryannaya_zakladka) for testing purposes*
 
-*Please, contact [developer](https://t.me/poteryannaya_zakladka) for testing purposes*
+For developing purposes:
+1. Get your own bot token via [Telegram BotFather](https://t.me/BotFather)
+2. Build image with docker (`docker build .`)
+3. Start docker container with envs provided. I.e.: `docker run -e DATABASE_HOST='127.0.0.1' -e TELEGRAM_API_TOKEN='foo' [image]`
+
+Alternatively you can use docker-compose or start directly by `main.py` or use it any other comfortable for you way.
 
 # About Watson Project
 **Work in progress!**
