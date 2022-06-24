@@ -5,7 +5,7 @@ from application.messages import (
     WELCOME,
     TYPE_ERROR,
     FILE_ADDED_TO_QUEUE,
-    TOO_MANY_ATTEMPTIONS,
+    TOO_MANY_ATTEMPTS,
 )
 from application.containers import Gateways
 from application.exceptions import TooManyAttemptsError
@@ -25,7 +25,7 @@ async def add_file_to_queue(message: Message, user_service=Gateways.user_service
         await user_service.update_uploaded_date(message)
         await message.answer(FILE_ADDED_TO_QUEUE)
     except TooManyAttemptsError:
-        await message.answer(TOO_MANY_ATTEMPTIONS)
+        await message.answer(TOO_MANY_ATTEMPTS)
 
 
 @dispatcher.message_handler(content_types=ContentTypes.ANY)

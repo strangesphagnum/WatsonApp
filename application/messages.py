@@ -14,6 +14,6 @@ FILE_ADDED_TO_QUEUE = """
 Your file was added to the queue and will be processed soon
 """
 
-TOO_MANY_ATTEMPTIONS = """
+TOO_MANY_ATTEMPTS = """
 You should wait for 24 hours before the next genome scan
 """
