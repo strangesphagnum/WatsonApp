@@ -24,7 +24,8 @@ async def add_file_to_queue(message: Message, sql_service=Gateways.sql_service, 
     """
     1. Works if message type is Document
     2. Check if uploaded date user's record delta with current dt is no more than 1 day
-    3. Send message for both success and unsucess cases
+    3. Publish message to rabbitmq
+    4. Send message for both success and unsucess cases
     """
     try:
         await sql_service.check_uploaded_date(message=message)
