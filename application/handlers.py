@@ -20,7 +20,11 @@ async def register_user(message: Message, sql_service=Gateways.sql_service):
 
 # Handlers order is important since dispatcher should check for document type first
 @dispatcher.message_handler(content_types=ContentTypes.DOCUMENT)
-async def add_file_to_queue(message: Message, sql_service=Gateways.sql_service, rabbit_service=Gateways.user_rabbit_service):
+async def add_file_to_queue(
+    message: Message,
+    sql_service=Gateways.sql_service,
+    rabbit_service=Gateways.user_rabbit_service,
+):
     """
     1. Works if message type is Document
     2. Check if uploaded date user's record delta with current dt is no more than 1 day

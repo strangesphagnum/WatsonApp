@@ -18,5 +18,5 @@ class MessageDataSerializer:
         return UserData(
             telegram_user_id=message.get("from").get("id"),
             telegram_chat_id=message.get("chat").get("id"),
-            document_id=document.get("file_id") if document else None
+            document_id=document.get("file_id") if document else None,
         )
