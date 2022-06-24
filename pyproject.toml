@@ -15,11 +15,11 @@ greenlet = "^1.1.2"
 aiogram = "^2.20"
 black = "^22.3.0"
 aio-pika = "^8.0.3"
+
+[tool.poetry.dev-dependencies]
 pytest = "^7.1.2"
 pytest-asyncio = "^0.18.3"
 Telethon = "^1.24.0"
-
-[tool.poetry.dev-dependencies]
 
 [tool.black]
 exclude = '(\.eggs|\.git|\.hg|__pycache__|migrations)'
