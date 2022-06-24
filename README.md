@@ -12,12 +12,12 @@ Built on
 - [aio-pika](https://aio-pika.readthedocs.io)
 
 # Usage
-Please visit [mutations_seeker_bot](https://t.me/mutations_seeker_bot)
+Please visit [mutations seeker bot](https://t.me/mutations_seeker_bot)
 
 Start the bot and follow the instructions.
 
 # About Watson Project
-Work in progress!
+*Work in progress!*
 
 Named after [James Watson](https://en.wikipedia.org/wiki/James_Watson) Watson project provides simple tool availiable in telegram for user's genome mutations check.
 
