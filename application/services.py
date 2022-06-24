@@ -12,7 +12,7 @@ class SQLService:
     def __init__(self, user_repository: SQLRepository):
         self._sql_repository: SQLRepository = user_repository
 
-    async def check_uploaded_date(self, message: Message) -> None:
+    async def check_user_uploaded_date(self, message: Message) -> None:
         message_data = MessageDataSerializer.parse_message_data(message=message)
         user = await self._sql_repository.get_record(
             telegram_user_id=message_data.telegram_user_id
@@ -21,14 +21,14 @@ class SQLService:
         if (user.last_uploaded is not None) and ((now - user.last_uploaded).days < 1):
             raise TooManyAttemptsError
 
-    async def update_uploaded_date(self, message: Message) -> None:
+    async def update_user_uploaded_date(self, message: Message) -> None:
         message_data = MessageDataSerializer.parse_message_data(message=message)
         user = await self._sql_repository.get_record(
             telegram_user_id=message_data.telegram_user_id
         )
         await self._sql_repository.update_record_last_uploaded(user.telegram_user_id)
 
-    async def create_if_none(self, message: Message) -> None:
+    async def create_user_if_none(self, message: Message) -> None:
         message_data = MessageDataSerializer.parse_message_data(message=message)
         user = await self._sql_repository.get_record(
             telegram_user_id=message_data.telegram_user_id

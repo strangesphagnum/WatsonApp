@@ -14,7 +14,7 @@ from application.exceptions import TooManyAttemptsError
 @dispatcher.message_handler(commands=["start"])
 async def register_user(message: Message, sql_service=Gateways.sql_service):
     """Write user with telegram_user_id and telegram_chat_id cols if user don't exists"""
-    await sql_service.create_if_none(message=message)
+    await sql_service.create_user_if_none(message=message)
     await message.reply(WELCOME)
 
 
@@ -32,8 +32,8 @@ async def add_file_to_queue(
     4. Send message for both success and unsucess cases
     """
     try:
-        await sql_service.check_uploaded_date(message=message)
-        await sql_service.update_uploaded_date(message=message)
+        await sql_service.check_user_uploaded_date(message=message)
+        await sql_service.update_user_uploaded_date(message=message)
         await rabbit_service.publish_message(message=message)
         await message.answer(FILE_ADDED_TO_QUEUE)
     except TooManyAttemptsError:
