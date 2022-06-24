@@ -21,7 +21,8 @@ async def register_user(message: Message, user_service=Gateways.user_service) ->
 @dispatcher.message_handler(content_types=ContentTypes.DOCUMENT)
 async def add_file_to_queue(message: Message, user_service=Gateways.user_service):
     try:
-        await user_service.update_user_uploaded_date(message)
+        await user_service.check_uploaded_date(message)
+        await user_service.update_uploaded_date(message)
         await message.answer(FILE_ADDED_TO_QUEUE)
     except TooManyAttemptsError:
         await message.answer(TOO_MANY_ATTEMPTIONS)
