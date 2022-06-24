@@ -1,5 +1,3 @@
-from enum import IntEnum
-
 import sqlalchemy as sa
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.sql import func
