@@ -21,12 +21,12 @@ For developing purposes:
 2. Build image with docker (`docker build .`)
 3. Start docker container with envs provided. I.e.: `docker run -e DATABASE_HOST='127.0.0.1' -e TELEGRAM_API_TOKEN='foo' [image]`
 
-Alternatively you can use docker-compose or start directly by `main.py` or start in any convenient way.
+Alternatively you can use docker-compose or start directly by calling `main.py` file. Or start in any convenient way. Whatever.
 
 # About Watson Project
 **Work in progress!**
 
-Named after [James Watson](https://en.wikipedia.org/wiki/James_Watson) Watson project provides simple tool availiable in telegram for user's genome mutations check.
+Named after [James Watson](https://en.wikipedia.org/wiki/James_Watson) Watson project provides simple tool available in telegram for user's genome mutations check.
 
 It allows user to upload .23andme type genome data and seek for important mutations based on [OpenSNP](https://opensnp.org) source.
 
