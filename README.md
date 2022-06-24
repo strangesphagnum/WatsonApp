@@ -13,7 +13,9 @@ Built on
 
 # Usage
 Please visit [mutations seeker bot](https://t.me/mutations_seeker_bot)
-*Currently unavailable. Please, contact [developer](https://t.me/poteryannaya_zakladka) for testing purposes*
+*Currently unavailable*
+
+*Please, contact [developer](https://t.me/poteryannaya_zakladka) for testing purposes*
 
 Start the bot and follow the instructions.
 
