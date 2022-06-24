@@ -2,7 +2,7 @@ WELCOME = """
 Hi 👋
 I'm DNA sequence checker bot 🔬😎
 
-Hope you've succesfully passed your genetical test and downloaded your .23andme type genome file.
+Hope you've passed your genetical test successfully and downloaded your .23andme type genome file.
 Upload this file as document when you're ready so I could check for interesting mutations in your genome!
 """
 
