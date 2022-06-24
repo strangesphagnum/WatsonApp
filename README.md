@@ -12,7 +12,10 @@ Built on
 - [aio-pika](https://aio-pika.readthedocs.io)
 
 # Usage
-Please visit [https://t.me/mutations_seeker_bot](mutations seeker bot), start the bot and follow the instructions.
+Please visit
+[https://t.me/mutations_seeker_bot](mutations seeker bot)
+
+Start the bot and follow the instructions.
 
 # About Watson Project
 Work in progress!
